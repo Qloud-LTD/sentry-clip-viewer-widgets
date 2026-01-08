@@ -1,0 +1,48 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "steering.steeringCompact",
+  "version": "1.0.0",
+  "category": "steering",
+  "name": "Steering Compact",
+  "description": "Compact steering wheel with angle inline",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.08,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "hstack",
+      "spacing": "4%w",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "children": [
+        {
+          "type": "icon",
+          "name": "steeringwheel",
+          "size": "80%h",
+          "color": "{{autopilot.color}}",
+          "rotation": "{{steering.angle}}",
+          "shadow": {
+            "color": "{{autopilot.color}}",
+            "opacity": 0.5,
+            "radius": 2
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{steering.formatted ?? '--°'}}",
+          "style": {
+            "fontSize": "40%h",
+            "fontWeight": "medium",
+            "fontDesign": "rounded",
+            "color": "#FFFFFFCC",
+            "minimumScaleFactor": 0.5
+          }
+        }
+      ]
+    }
+  ]
+}

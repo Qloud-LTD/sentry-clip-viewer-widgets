@@ -1,0 +1,30 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.digital",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Digital Speed",
+  "description": "Large digital speed display",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.06,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{speed.formatted ?? '--'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "60%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "#FFFFFF",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

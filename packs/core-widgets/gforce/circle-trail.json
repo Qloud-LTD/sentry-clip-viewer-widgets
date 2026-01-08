@@ -1,0 +1,148 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gForce.gForceCircleTrail",
+  "version": "1.0.0",
+  "category": "gforce",
+  "name": "G-Force Circle with Trail",
+  "description": "Circular g-force meter with trailing dot history",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.08,
+    "minHeight": 0.08
+  },
+
+  "options": {
+    "maxG": {
+      "type": "number",
+      "default": 1.5,
+      "label": "Maximum G",
+      "description": "Maximum g-force displayed (edge of circle)"
+    },
+    "trailLength": {
+      "type": "number",
+      "default": 5,
+      "label": "Trail Length",
+      "description": "Number of trailing dots to show"
+    }
+  },
+
+  "bindings": {
+    "dotX": {
+      "expression": "{{50 + (gforce.x / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "dotY": {
+      "expression": "{{50 - (gforce.y / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "dotColor": {
+      "conditions": [
+        { "when": "{{gforce.magnitude > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.magnitude > 0.4}}", "value": "#FF9500" },
+        { "when": "{{gforce.magnitude > 0.1}}", "value": "#34C759" }
+      ],
+      "default": "#FFFFFF"
+    },
+    "trail1X": {
+      "expression": "{{50 + (gforce.history[1].x / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "trail1Y": {
+      "expression": "{{50 - (gforce.history[1].y / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "trail2X": {
+      "expression": "{{50 + (gforce.history[2].x / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "trail2Y": {
+      "expression": "{{50 - (gforce.history[2].y / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "trail3X": {
+      "expression": "{{50 + (gforce.history[3].x / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "trail3Y": {
+      "expression": "{{50 - (gforce.history[3].y / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "circle",
+      "id": "background",
+      "radius": "42%",
+      "position": { "x": "50%", "y": "50%" },
+      "fill": "rgba(0,0,0,0.7)"
+    },
+    {
+      "type": "circle",
+      "id": "border",
+      "radius": "42%",
+      "position": { "x": "50%", "y": "50%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "2%"
+    },
+    {
+      "type": "circle",
+      "id": "innerRing",
+      "radius": "21%",
+      "position": { "x": "50%", "y": "50%" },
+      "stroke": "rgba(255,255,255,0.3)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "line",
+      "id": "horizontalCrosshair",
+      "from": { "x": "10%", "y": "50%" },
+      "to": { "x": "90%", "y": "50%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "line",
+      "id": "verticalCrosshair",
+      "from": { "x": "50%", "y": "10%" },
+      "to": { "x": "50%", "y": "90%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "circle",
+      "id": "trailDot3",
+      "radius": "2%",
+      "position": { "x": "{{trail3X}}", "y": "{{trail3Y}}" },
+      "fill": "rgba(255,255,255,0.2)"
+    },
+    {
+      "type": "circle",
+      "id": "trailDot2",
+      "radius": "2.5%",
+      "position": { "x": "{{trail2X}}", "y": "{{trail2Y}}" },
+      "fill": "rgba(255,255,255,0.35)"
+    },
+    {
+      "type": "circle",
+      "id": "trailDot1",
+      "radius": "3%",
+      "position": { "x": "{{trail1X}}", "y": "{{trail1Y}}" },
+      "fill": "rgba(255,255,255,0.5)"
+    },
+    {
+      "type": "circle",
+      "id": "gForceDot",
+      "radius": "5%",
+      "position": { "x": "{{dotX}}", "y": "{{dotY}}" },
+      "fill": "{{dotColor}}",
+      "shadow": {
+        "color": "{{dotColor}}",
+        "opacity": 0.5,
+        "radius": "4%"
+      }
+    }
+  ]
+}

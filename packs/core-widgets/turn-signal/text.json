@@ -1,0 +1,59 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "turnSignal.turnSignalText",
+  "version": "1.0.0",
+  "category": "turnSignal",
+  "name": "Turn Signal Text",
+  "description": "Text labels showing LEFT and RIGHT",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 3.0,
+    "minWidth": 0.10,
+    "minHeight": 0.035
+  },
+
+  "bindings": {
+    "leftColor": {
+      "conditions": [
+        { "when": "{{blinker.left}}", "value": "#00FF00" }
+      ],
+      "default": "rgba(255, 255, 255, 0.3)"
+    },
+    "rightColor": {
+      "conditions": [
+        { "when": "{{blinker.right}}", "value": "#00FF00" }
+      ],
+      "default": "rgba(255, 255, 255, 0.3)"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "15%w",
+      "alignment": "center",
+      "children": [
+        {
+          "type": "text",
+          "content": "LEFT",
+          "style": {
+            "fontSize": "40%h",
+            "fontWeight": "bold",
+            "color": "{{leftColor}}"
+          }
+        },
+        {
+          "type": "text",
+          "content": "RIGHT",
+          "style": {
+            "fontSize": "40%h",
+            "fontWeight": "bold",
+            "color": "{{rightColor}}"
+          }
+        }
+      ]
+    }
+  ]
+}

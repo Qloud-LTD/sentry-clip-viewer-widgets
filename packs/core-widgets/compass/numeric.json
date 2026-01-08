@@ -1,0 +1,40 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compass.compassNumeric",
+  "version": "1.0.0",
+  "category": "compass",
+  "name": "Compass Numeric",
+  "description": "Degrees with cardinal direction below",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.06,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{heading.formatted ?? '--°'}}",
+      "position": { "x": "50%", "y": "35%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "45%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "text",
+      "content": "{{heading.cardinal ?? '--'}}",
+      "position": { "x": "50%", "y": "75%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "20%h",
+        "fontWeight": "medium",
+        "color": "#00D4FF"
+      }
+    }
+  ]
+}

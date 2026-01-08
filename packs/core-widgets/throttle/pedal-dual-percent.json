@@ -1,0 +1,242 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "throttle.throttlePedalDualPercent",
+  "version": "1.0.0",
+  "category": "throttle",
+  "name": "Dual Pedals with Percent",
+  "description": "Dual pedals with status/percentage text on the right side of each",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 2.5,
+    "minWidth": 0.10,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "throttleFillHeight": {
+      "default": "{{throttle.percent}}%"
+    },
+    "throttleFillColor": {
+      "conditions": [
+        { "when": "{{throttle.percent > 0}}", "value": "#34C759" }
+      ],
+      "default": "rgba(255, 255, 255, 0.3)"
+    },
+    "throttleTextColor": {
+      "conditions": [
+        { "when": "{{throttle.percent > 0}}", "value": "#34C759" }
+      ],
+      "default": "rgba(255, 255, 255, 0.5)"
+    },
+    "brakeFillHeight": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "100%" }
+      ],
+      "default": "0%"
+    },
+    "brakeFillColor": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "#FF3B30" }
+      ],
+      "default": "rgba(255, 255, 255, 0.3)"
+    },
+    "brakeText": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "ON" }
+      ],
+      "default": "OFF"
+    },
+    "brakeTextColor": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "#FF3B30" }
+      ],
+      "default": "rgba(255, 255, 255, 0.5)"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "alignment": "center",
+      "spacing": "8%w",
+      "children": [
+        {
+          "type": "group",
+          "id": "brakeSection",
+          "layout": "hstack",
+          "alignment": "center",
+          "spacing": "3%w",
+          "children": [
+            {
+              "type": "group",
+              "id": "brakePedal",
+              "layout": "zstack",
+              "alignment": "bottom",
+              "size": { "width": "28%", "height": "100%" },
+              "children": [
+                {
+                  "type": "rect",
+                  "id": "brakeBackground",
+                  "size": { "width": "90%", "height": "90%" },
+                  "position": { "x": "50%", "y": "50%" },
+                  "anchor": "center",
+                  "cornerRadius": "15%w",
+                  "fill": "rgba(255, 255, 255, 0.15)",
+                  "stroke": {
+                    "color": "rgba(255, 255, 255, 0.3)",
+                    "width": 1
+                  }
+                },
+                {
+                  "type": "rect",
+                  "id": "brakeFill",
+                  "size": { "width": "90%", "height": "{{brakeFillHeight}}" },
+                  "maxHeight": "90%",
+                  "position": { "x": "50%", "y": "95%" },
+                  "anchor": "bottomCenter",
+                  "cornerRadius": "15%w",
+                  "fill": "{{brakeFillColor}}"
+                },
+                {
+                  "type": "rect",
+                  "id": "brakeRidges1",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "25%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                },
+                {
+                  "type": "rect",
+                  "id": "brakeRidges2",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "40%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                },
+                {
+                  "type": "rect",
+                  "id": "brakeRidges3",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "55%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                },
+                {
+                  "type": "rect",
+                  "id": "brakeRidges4",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "70%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "content": "{{brakeText}}",
+              "style": {
+                "fontSize": "18%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "{{brakeTextColor}}"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "throttleSection",
+          "layout": "hstack",
+          "alignment": "center",
+          "spacing": "3%w",
+          "children": [
+            {
+              "type": "group",
+              "id": "throttlePedal",
+              "layout": "zstack",
+              "alignment": "bottom",
+              "size": { "width": "28%", "height": "100%" },
+              "children": [
+                {
+                  "type": "rect",
+                  "id": "throttleBackground",
+                  "size": { "width": "90%", "height": "90%" },
+                  "position": { "x": "50%", "y": "50%" },
+                  "anchor": "center",
+                  "cornerRadius": "15%w",
+                  "fill": "rgba(255, 255, 255, 0.15)",
+                  "stroke": {
+                    "color": "rgba(255, 255, 255, 0.3)",
+                    "width": 1
+                  }
+                },
+                {
+                  "type": "rect",
+                  "id": "throttleFill",
+                  "size": { "width": "90%", "height": "{{throttleFillHeight}}" },
+                  "maxHeight": "90%",
+                  "position": { "x": "50%", "y": "95%" },
+                  "anchor": "bottomCenter",
+                  "cornerRadius": "15%w",
+                  "fill": "{{throttleFillColor}}"
+                },
+                {
+                  "type": "rect",
+                  "id": "throttleRidges1",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "25%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                },
+                {
+                  "type": "rect",
+                  "id": "throttleRidges2",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "40%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                },
+                {
+                  "type": "rect",
+                  "id": "throttleRidges3",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "55%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                },
+                {
+                  "type": "rect",
+                  "id": "throttleRidges4",
+                  "size": { "width": "60%", "height": "2%" },
+                  "position": { "x": "50%", "y": "70%" },
+                  "anchor": "center",
+                  "cornerRadius": "50%h",
+                  "fill": "rgba(255, 255, 255, 0.2)"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "content": "{{throttle.formatted ?? '--%'}}",
+              "style": {
+                "fontSize": "18%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "{{throttleTextColor}}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

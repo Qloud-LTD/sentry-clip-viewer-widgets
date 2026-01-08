@@ -1,0 +1,59 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "autopilot.autopilotDotLabel",
+  "version": "1.0.0",
+  "category": "autopilot",
+  "name": "Autopilot Dot + Label",
+  "description": "Color-coded dot with status text below",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.06,
+    "minHeight": 0.06
+  },
+
+  "bindings": {
+    "dotColor": {
+      "conditions": [
+        { "when": "{{autopilot.state == 'fsd'}}", "value": "#0066FF" },
+        { "when": "{{autopilot.state == 'autosteer'}}", "value": "#00CC00" },
+        { "when": "{{autopilot.state == 'tacc'}}", "value": "#FF9900" }
+      ],
+      "default": "#FFFFFF"
+    },
+    "statusText": {
+      "conditions": [
+        { "when": "{{autopilot.state == 'fsd'}}", "value": "FSD" },
+        { "when": "{{autopilot.state == 'autosteer'}}", "value": "Autosteer" },
+        { "when": "{{autopilot.state == 'tacc'}}", "value": "TACC" }
+      ],
+      "default": "Manual"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "spacing": "5%h",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "circle",
+          "radius": "25%h",
+          "fill": "{{dotColor}}"
+        },
+        {
+          "type": "text",
+          "content": "{{statusText}}",
+          "style": {
+            "fontSize": "18%h",
+            "fontWeight": "medium",
+            "color": "{{dotColor}}",
+            "minimumScaleFactor": 0.5
+          }
+        }
+      ]
+    }
+  ]
+}

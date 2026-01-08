@@ -1,0 +1,119 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "battery.batteryFull",
+  "version": "1.0.0",
+  "category": "battery",
+  "name": "Full Battery Display",
+  "description": "Battery icon with percentage and range",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.12,
+    "minHeight": 0.06
+  },
+
+  "bindings": {
+    "batteryColor": {
+      "conditions": [
+        { "when": "{{battery.percent < 20}}", "value": "#FF3B30" },
+        { "when": "{{battery.percent < 40}}", "value": "#FF9500" }
+      ],
+      "default": "#34C759"
+    },
+    "fillWidth": {
+      "conditions": [
+        { "when": "{{battery.percent != null}}", "value": "{{battery.percent}}%" }
+      ],
+      "default": "0%"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "6%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "group",
+          "layout": "zstack",
+          "size": { "width": "30%", "height": "50%h" },
+          "children": [
+            {
+              "type": "rect",
+              "size": { "width": "85%", "height": "100%" },
+              "position": { "x": "0%", "y": "50%" },
+              "anchor": "centerLeft",
+              "cornerRadius": "10%h",
+              "stroke": {
+                "color": "#FFFFFF",
+                "width": 2
+              }
+            },
+            {
+              "type": "rect",
+              "size": { "width": "{{fillWidth}}", "height": "80%" },
+              "maxWidth": "75%",
+              "position": { "x": "5%", "y": "50%" },
+              "anchor": "centerLeft",
+              "cornerRadius": "6%h",
+              "fill": "{{batteryColor}}"
+            },
+            {
+              "type": "rect",
+              "size": { "width": "10%", "height": "40%" },
+              "position": { "x": "87%", "y": "50%" },
+              "anchor": "centerLeft",
+              "cornerRadius": "4%h",
+              "fill": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "2%h",
+          "alignment": "leading",
+          "children": [
+            {
+              "type": "text",
+              "content": "{{battery.formatted ?? '--%'}}",
+              "style": {
+                "fontSize": "35%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "{{batteryColor}}"
+              }
+            },
+            {
+              "type": "group",
+              "layout": "hstack",
+              "spacing": "2%w",
+              "children": [
+                {
+                  "type": "text",
+                  "content": "{{battery.range | int ?? '--'}}",
+                  "style": {
+                    "fontSize": "22%h",
+                    "fontWeight": "medium",
+                    "color": "rgba(255,255,255,0.7)"
+                  }
+                },
+                {
+                  "type": "text",
+                  "content": "mi",
+                  "style": {
+                    "fontSize": "18%h",
+                    "fontWeight": "regular",
+                    "color": "rgba(255,255,255,0.5)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

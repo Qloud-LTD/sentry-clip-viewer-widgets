@@ -1,0 +1,173 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gForce.gForceSplitBars",
+  "version": "1.0.0",
+  "category": "gforce",
+  "name": "G-Force Split Bars",
+  "description": "Racing-style horizontal bars for lateral and longitudinal g-force",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.12,
+    "minHeight": 0.06
+  },
+
+  "options": {
+    "maxG": {
+      "type": "number",
+      "default": 1.0,
+      "label": "Maximum G",
+      "description": "G-force value at bar ends"
+    }
+  },
+
+  "bindings": {
+    "xBarWidth": {
+      "expression": "{{(gforce.x | abs) / (options.maxG ?? 1.0) * 50}}%",
+      "default": "0%"
+    },
+    "xBarOffset": {
+      "conditions": [
+        { "when": "{{gforce.x >= 0}}", "value": "50%" }
+      ],
+      "default": "{{50 - (gforce.x | abs) / (options.maxG ?? 1.0) * 50}}%"
+    },
+    "yBarWidth": {
+      "expression": "{{(gforce.y | abs) / (options.maxG ?? 1.0) * 50}}%",
+      "default": "0%"
+    },
+    "yBarOffset": {
+      "conditions": [
+        { "when": "{{gforce.y >= 0}}", "value": "50%" }
+      ],
+      "default": "{{50 - (gforce.y | abs) / (options.maxG ?? 1.0) * 50}}%"
+    },
+    "xBarColor": {
+      "conditions": [
+        { "when": "{{gforce.x | abs > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.x | abs > 0.5}}", "value": "#FFCC00" }
+      ],
+      "default": "#34C759"
+    },
+    "yBarColor": {
+      "conditions": [
+        { "when": "{{gforce.y | abs > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.y | abs > 0.5}}", "value": "#FFCC00" }
+      ],
+      "default": "#34C759"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "alignment": "center",
+      "spacing": "15%h",
+      "children": [
+        {
+          "type": "group",
+          "layout": "vstack",
+          "alignment": "leading",
+          "spacing": "2%h",
+          "children": [
+            {
+              "type": "text",
+              "content": "Lateral",
+              "style": {
+                "fontSize": "10%h",
+                "fontWeight": "medium",
+                "color": "rgba(255,255,255,0.6)"
+              }
+            },
+            {
+              "type": "group",
+              "layout": "zstack",
+              "alignment": "center",
+              "size": { "width": "100%", "height": "15%h" },
+              "children": [
+                {
+                  "type": "rect",
+                  "id": "xBackground",
+                  "size": { "width": "90%", "height": "100%" },
+                  "position": { "x": "50%", "y": "50%" },
+                  "anchor": "center",
+                  "cornerRadius": "10%h",
+                  "fill": "rgba(128,128,128,0.3)"
+                },
+                {
+                  "type": "rect",
+                  "id": "xCenterLine",
+                  "size": { "width": "2%", "height": "100%" },
+                  "position": { "x": "50%", "y": "50%" },
+                  "anchor": "center",
+                  "fill": "rgba(255,255,255,0.5)"
+                },
+                {
+                  "type": "rect",
+                  "id": "xValueBar",
+                  "size": { "width": "{{xBarWidth}}", "height": "100%" },
+                  "position": { "x": "{{xBarOffset}}", "y": "50%" },
+                  "anchor": "centerLeft",
+                  "cornerRadius": "10%h",
+                  "fill": "{{xBarColor}}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "alignment": "leading",
+          "spacing": "2%h",
+          "children": [
+            {
+              "type": "text",
+              "content": "Longitudinal",
+              "style": {
+                "fontSize": "10%h",
+                "fontWeight": "medium",
+                "color": "rgba(255,255,255,0.6)"
+              }
+            },
+            {
+              "type": "group",
+              "layout": "zstack",
+              "alignment": "center",
+              "size": { "width": "100%", "height": "15%h" },
+              "children": [
+                {
+                  "type": "rect",
+                  "id": "yBackground",
+                  "size": { "width": "90%", "height": "100%" },
+                  "position": { "x": "50%", "y": "50%" },
+                  "anchor": "center",
+                  "cornerRadius": "10%h",
+                  "fill": "rgba(128,128,128,0.3)"
+                },
+                {
+                  "type": "rect",
+                  "id": "yCenterLine",
+                  "size": { "width": "2%", "height": "100%" },
+                  "position": { "x": "50%", "y": "50%" },
+                  "anchor": "center",
+                  "fill": "rgba(255,255,255,0.5)"
+                },
+                {
+                  "type": "rect",
+                  "id": "yValueBar",
+                  "size": { "width": "{{yBarWidth}}", "height": "100%" },
+                  "position": { "x": "{{yBarOffset}}", "y": "50%" },
+                  "anchor": "centerLeft",
+                  "cornerRadius": "10%h",
+                  "fill": "{{yBarColor}}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

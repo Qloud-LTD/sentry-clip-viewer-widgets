@@ -1,0 +1,58 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "location.locationCoordinates",
+  "version": "1.0.0",
+  "category": "location",
+  "name": "Coordinates",
+  "description": "Latitude and longitude coordinates on separate lines",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.12,
+    "minHeight": 0.06
+  },
+
+  "bindings": {
+    "latDisplay": {
+      "expression": "{{location.lat | abs | format:'%.5f'}}{{location.lat >= 0 ? '°N' : '°S'}}",
+      "default": "Lat: --"
+    },
+    "lonDisplay": {
+      "expression": "{{location.lon | abs | format:'%.5f'}}{{location.lon >= 0 ? '°E' : '°W'}}",
+      "default": "Lon: --"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "alignment": "leading",
+      "spacing": "2%h",
+      "position": { "x": "5%", "y": "50%" },
+      "anchor": "centerLeft",
+      "children": [
+        {
+          "type": "text",
+          "content": "{{latDisplay}}",
+          "style": {
+            "fontSize": "35%h",
+            "fontWeight": "medium",
+            "fontDesign": "monospaced",
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{lonDisplay}}",
+          "style": {
+            "fontSize": "35%h",
+            "fontWeight": "medium",
+            "fontDesign": "monospaced",
+            "color": "#FFFFFF"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "location.locationStreetOnly",
+  "version": "1.0.0",
+  "category": "location",
+  "name": "Street Only",
+  "description": "Street name only from reverse geocoded address",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.12,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "streetName": {
+      "expression": "{{location.name | split:', ' | first}}",
+      "default": "No Location"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{streetName}}",
+      "position": { "x": "5%", "y": "50%" },
+      "anchor": "centerLeft",
+      "style": {
+        "fontSize": "45%h",
+        "fontWeight": "semibold",
+        "color": "#FFFFFF",
+        "lineLimit": 1,
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

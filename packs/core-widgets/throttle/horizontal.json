@@ -1,0 +1,162 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "throttle.throttleHorizontal",
+  "version": "1.0.0",
+  "category": "throttle",
+  "name": "Horizontal Throttle/Brake",
+  "description": "F1-style horizontal bars for throttle and brake",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 3.3,
+    "minWidth": 0.12,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "throttleFillWidth": {
+      "default": "{{throttle.percent}}%"
+    },
+    "throttleColor": {
+      "conditions": [
+        { "when": "{{throttle.percent > 0}}", "value": "#34C759" }
+      ],
+      "default": "rgba(128, 128, 128, 0.5)"
+    },
+    "brakeFillWidth": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "100%" }
+      ],
+      "default": "0%"
+    },
+    "brakeColor": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "#FF3B30" }
+      ],
+      "default": "rgba(128, 128, 128, 0.5)"
+    },
+    "brakeTextColor": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "#FF3B30" }
+      ],
+      "default": "rgba(255, 255, 255, 0.5)"
+    },
+    "brakeText": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "ON" }
+      ],
+      "default": "OFF"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "spacing": "10%h",
+      "alignment": "leading",
+      "children": [
+        {
+          "type": "group",
+          "layout": "hstack",
+          "spacing": "4%w",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "text",
+              "content": "T",
+              "size": { "width": "8%w" },
+              "style": {
+                "fontSize": "25%h",
+                "fontWeight": "medium",
+                "color": "rgba(255, 255, 255, 0.7)"
+              }
+            },
+            {
+              "type": "group",
+              "layout": "zstack",
+              "alignment": "leading",
+              "size": { "width": "65%", "height": "35%h" },
+              "children": [
+                {
+                  "type": "rect",
+                  "size": { "width": "100%", "height": "100%" },
+                  "cornerRadius": "4%h",
+                  "fill": "rgba(128, 128, 128, 0.3)"
+                },
+                {
+                  "type": "rect",
+                  "size": { "width": "{{throttleFillWidth}}", "height": "100%" },
+                  "maxWidth": "100%",
+                  "cornerRadius": "4%h",
+                  "fill": "{{throttleColor}}"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "content": "{{throttle.formatted ?? '--%'}}",
+              "size": { "width": "15%w" },
+              "anchor": "trailing",
+              "style": {
+                "fontSize": "20%h",
+                "fontWeight": "bold",
+                "color": "#FFFFFF"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "hstack",
+          "spacing": "4%w",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "text",
+              "content": "B",
+              "size": { "width": "8%w" },
+              "style": {
+                "fontSize": "25%h",
+                "fontWeight": "medium",
+                "color": "rgba(255, 255, 255, 0.7)"
+              }
+            },
+            {
+              "type": "group",
+              "layout": "zstack",
+              "alignment": "leading",
+              "size": { "width": "65%", "height": "35%h" },
+              "children": [
+                {
+                  "type": "rect",
+                  "size": { "width": "100%", "height": "100%" },
+                  "cornerRadius": "4%h",
+                  "fill": "rgba(128, 128, 128, 0.3)"
+                },
+                {
+                  "type": "rect",
+                  "size": { "width": "{{brakeFillWidth}}", "height": "100%" },
+                  "maxWidth": "100%",
+                  "cornerRadius": "4%h",
+                  "fill": "{{brakeColor}}"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "content": "{{brakeText}}",
+              "size": { "width": "15%w" },
+              "anchor": "trailing",
+              "style": {
+                "fontSize": "20%h",
+                "fontWeight": "bold",
+                "color": "{{brakeTextColor}}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

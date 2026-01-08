@@ -1,0 +1,32 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "steering.steeringWheel",
+  "version": "1.0.0",
+  "category": "steering",
+  "name": "Steering Wheel",
+  "description": "Rotating steering wheel icon with autopilot color",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.05,
+    "minHeight": 0.05
+  },
+
+  "elements": [
+    {
+      "type": "icon",
+      "name": "steeringwheel",
+      "size": "70%h",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "color": "{{autopilot.color}}",
+      "rotation": "{{steering.angle}}",
+      "shadow": {
+        "color": "{{autopilot.color}}",
+        "opacity": 0.5,
+        "radius": 2
+      }
+    }
+  ]
+}

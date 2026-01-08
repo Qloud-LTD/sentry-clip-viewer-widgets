@@ -1,0 +1,85 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "battery.batteryCompact",
+  "version": "1.0.0",
+  "category": "battery",
+  "name": "Compact Battery",
+  "description": "Minimal battery display for small areas",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.05,
+    "minHeight": 0.03
+  },
+
+  "bindings": {
+    "batteryColor": {
+      "conditions": [
+        { "when": "{{battery.percent < 20}}", "value": "#FF3B30" },
+        { "when": "{{battery.percent < 40}}", "value": "#FF9500" }
+      ],
+      "default": "#34C759"
+    },
+    "fillWidth": {
+      "conditions": [
+        { "when": "{{battery.percent != null}}", "value": "{{battery.percent}}%" }
+      ],
+      "default": "0%"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "zstack",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "rect",
+          "size": { "width": "85%", "height": "70%" },
+          "position": { "x": "0%", "y": "50%" },
+          "anchor": "centerLeft",
+          "cornerRadius": "15%h",
+          "stroke": {
+            "color": "#FFFFFF",
+            "width": 1.5
+          }
+        },
+        {
+          "type": "rect",
+          "size": { "width": "{{fillWidth}}", "height": "55%" },
+          "maxWidth": "75%",
+          "position": { "x": "5%", "y": "50%" },
+          "anchor": "centerLeft",
+          "cornerRadius": "10%h",
+          "fill": "{{batteryColor}}"
+        },
+        {
+          "type": "rect",
+          "size": { "width": "10%", "height": "35%" },
+          "position": { "x": "87%", "y": "50%" },
+          "anchor": "centerLeft",
+          "cornerRadius": "5%h",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "content": "{{battery.percent | int ?? '--'}}",
+          "position": { "x": "42%", "y": "50%" },
+          "anchor": "center",
+          "style": {
+            "fontSize": "45%h",
+            "fontWeight": "bold",
+            "fontDesign": "rounded",
+            "color": "#FFFFFF",
+            "shadow": {
+              "color": "#000000",
+              "radius": 2,
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.analog",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Analog Gauge",
+  "description": "Circular analog speedometer with needle",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.10,
+    "minHeight": 0.10
+  },
+
+  "options": {
+    "maxSpeed": {
+      "type": "number",
+      "default": 160,
+      "label": "Maximum Speed",
+      "description": "Maximum speed value on the gauge"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "arc",
+      "id": "dialBackground",
+      "center": { "x": "50%", "y": "50%" },
+      "radius": "46%",
+      "startAngle": 135,
+      "endAngle": 405,
+      "stroke": "rgba(255,255,255,0.3)",
+      "strokeWidth": "2%"
+    },
+    {
+      "type": "tickmarks",
+      "id": "ticks",
+      "center": { "x": "50%", "y": "50%" },
+      "innerRadius": "34%",
+      "outerRadius": "44%",
+      "startAngle": 135,
+      "endAngle": 405,
+      "count": 17,
+      "majorEvery": 4,
+      "majorWidth": "2%",
+      "minorWidth": "1%",
+      "color": "rgba(255,255,255,0.7)"
+    },
+    {
+      "type": "needle",
+      "id": "speedNeedle",
+      "center": { "x": "50%", "y": "50%" },
+      "length": "38%",
+      "width": "3%",
+      "color": "#FF3B30",
+      "value": "{{speed.value ?? 0}}",
+      "minValue": 0,
+      "maxValue": "{{options.maxSpeed ?? 160}}",
+      "startAngle": 135,
+      "endAngle": 405
+    },
+    {
+      "type": "circle",
+      "id": "centerCap",
+      "radius": "5%",
+      "position": { "x": "50%", "y": "50%" },
+      "fill": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "speedReadout",
+      "content": "{{speed.formatted ?? '--'}}",
+      "position": { "x": "50%", "y": "72%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "15%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "text",
+      "id": "unitLabel",
+      "content": "{{speed.unit}}",
+      "position": { "x": "50%", "y": "82%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "8%h",
+        "fontWeight": "medium",
+        "color": "rgba(255,255,255,0.7)"
+      }
+    }
+  ]
+}

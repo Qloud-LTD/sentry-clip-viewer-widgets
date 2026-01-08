@@ -1,0 +1,43 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "steering.steeringWheelAngle",
+  "version": "1.0.0",
+  "category": "steering",
+  "name": "Steering Wheel + Angle",
+  "description": "Rotating steering wheel with angle text below",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.06,
+    "minHeight": 0.08
+  },
+
+  "elements": [
+    {
+      "type": "icon",
+      "name": "steeringwheel",
+      "size": "50%h",
+      "position": { "x": "50%", "y": "35%" },
+      "anchor": "center",
+      "color": "{{autopilot.color}}",
+      "rotation": "{{steering.angle}}",
+      "shadow": {
+        "color": "{{autopilot.color}}",
+        "opacity": 0.5,
+        "radius": 2
+      }
+    },
+    {
+      "type": "text",
+      "content": "{{steering.formatted ?? '--°'}}",
+      "position": { "x": "50%", "y": "80%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "15%h",
+        "fontWeight": "medium",
+        "fontDesign": "rounded",
+        "color": "#FFFFFFCC"
+      }
+    }
+  ]
+}

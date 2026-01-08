@@ -1,0 +1,40 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "battery.batteryPercentOnly",
+  "version": "1.0.0",
+  "category": "battery",
+  "name": "Battery Percent Only",
+  "description": "Just the battery percentage text",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.05,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "batteryColor": {
+      "conditions": [
+        { "when": "{{battery.percent < 20}}", "value": "#FF3B30" },
+        { "when": "{{battery.percent < 40}}", "value": "#FF9500" }
+      ],
+      "default": "#34C759"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{battery.formatted ?? '--%'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "60%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "{{batteryColor}}",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

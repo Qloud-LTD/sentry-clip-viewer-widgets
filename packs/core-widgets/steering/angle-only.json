@@ -1,0 +1,67 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "steering.steeringAngleOnly",
+  "version": "1.0.0",
+  "category": "steering",
+  "name": "Steering Angle",
+  "description": "Steering angle with direction indicator",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.08,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "directionSymbol": {
+      "conditions": [
+        { "when": "{{steering.angle < -5}}", "value": "◀" },
+        { "when": "{{steering.angle > 5}}", "value": "▶" }
+      ],
+      "default": "●"
+    },
+    "directionColor": {
+      "conditions": [
+        { "when": "{{steering.angle < -5}}", "value": "#FFCC00" },
+        { "when": "{{steering.angle > 5}}", "value": "#FFCC00" }
+      ],
+      "default": "#FFFFFF80"
+    },
+    "angleDisplay": {
+      "expression": "abs({{steering.angle}})",
+      "format": "%.0f°",
+      "fallback": "--°"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "hstack",
+      "spacing": "2%w",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "children": [
+        {
+          "type": "text",
+          "content": "{{directionSymbol}}",
+          "style": {
+            "fontSize": "30%h",
+            "fontWeight": "medium",
+            "color": "{{directionColor}}"
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{angleDisplay}}",
+          "style": {
+            "fontSize": "50%h",
+            "fontWeight": "bold",
+            "fontDesign": "rounded",
+            "color": "#FFFFFF",
+            "minimumScaleFactor": 0.5
+          }
+        }
+      ]
+    }
+  ]
+}

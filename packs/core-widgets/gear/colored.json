@@ -1,0 +1,48 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gear.colored",
+  "version": "1.0.0",
+  "category": "gear",
+  "name": "Gear Colored Circle",
+  "description": "Gear letter in a color-coded circle",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.04,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "circleColor": {
+      "conditions": [
+        { "when": "{{gear.letter == 'D'}}", "value": "#00CC00" },
+        { "when": "{{gear.letter == 'R'}}", "value": "#FF3B30" },
+        { "when": "{{gear.letter == 'P'}}", "value": "#007AFF" },
+        { "when": "{{gear.letter == 'N'}}", "value": "#FF9500" }
+      ],
+      "default": "#8E8E93"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "circle",
+      "radius": "40%",
+      "position": { "x": "50%", "y": "50%" },
+      "fill": "{{circleColor}}"
+    },
+    {
+      "type": "text",
+      "content": "{{gear.letter ?? '-'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "40%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

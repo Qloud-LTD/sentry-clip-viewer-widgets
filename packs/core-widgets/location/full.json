@@ -1,0 +1,47 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "location.locationFullAddress",
+  "version": "1.0.0",
+  "category": "location",
+  "name": "Full Address",
+  "description": "Full address with coordinates below",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.15,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "alignment": "leading",
+      "spacing": "5%h",
+      "position": { "x": "5%", "y": "50%" },
+      "anchor": "centerLeft",
+      "children": [
+        {
+          "type": "text",
+          "content": "{{location.name ?? 'No Location'}}",
+          "style": {
+            "fontSize": "30%h",
+            "fontWeight": "semibold",
+            "color": "#FFFFFF",
+            "lineLimit": 2
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{location.formatted ?? 'No GPS'}}",
+          "style": {
+            "fontSize": "20%h",
+            "fontWeight": "regular",
+            "fontDesign": "monospaced",
+            "color": "rgba(255,255,255,0.7)"
+          }
+        }
+      ]
+    }
+  ]
+}

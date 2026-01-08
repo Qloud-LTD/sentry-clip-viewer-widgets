@@ -1,0 +1,57 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "autopilot.autopilotFull",
+  "version": "1.0.0",
+  "category": "autopilot",
+  "name": "Autopilot Full",
+  "description": "Complete autopilot display with icon and status text",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.1,
+    "minHeight": 0.06
+  },
+
+  "bindings": {
+    "statusText": {
+      "conditions": [
+        { "when": "{{autopilot.state == 'fsd'}}", "value": "FSD" },
+        { "when": "{{autopilot.state == 'autosteer'}}", "value": "Autosteer" },
+        { "when": "{{autopilot.state == 'tacc'}}", "value": "TACC" }
+      ],
+      "default": "Manual"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "8%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "icon",
+          "name": "steeringwheel",
+          "size": "60%h",
+          "color": "{{autopilot.color}}",
+          "shadow": {
+            "color": "{{autopilot.color}}",
+            "opacity": 0.5,
+            "radius": 2
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{statusText}}",
+          "style": {
+            "fontSize": "35%h",
+            "fontWeight": "semibold",
+            "color": "{{autopilot.color}}",
+            "minimumScaleFactor": 0.5
+          }
+        }
+      ]
+    }
+  ]
+}

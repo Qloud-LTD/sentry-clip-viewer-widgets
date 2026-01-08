@@ -1,0 +1,44 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "timestamp.timestampDateTime",
+  "version": "1.0.0",
+  "category": "timestamp",
+  "name": "Date + Time",
+  "description": "Single line with date and time",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.18,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "3%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "text",
+          "content": "{{timestamp.date ?? '---'}}",
+          "style": {
+            "fontSize": "50%h",
+            "fontWeight": "medium",
+            "color": "rgba(255,255,255,0.8)"
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{timestamp.time ?? '--:--:--'}}",
+          "style": {
+            "fontSize": "50%h",
+            "fontWeight": "bold",
+            "fontDesign": "monospaced",
+            "color": "#FFFFFF"
+          }
+        }
+      ]
+    }
+  ]
+}

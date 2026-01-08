@@ -1,0 +1,59 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.digital",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Digital Speed",
+  "description": "Large digital speed display with unit label",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.06,
+    "minHeight": 0.06
+  },
+
+  "options": {
+    "showUnit": {
+      "type": "boolean",
+      "default": false,
+      "label": "Show Unit",
+      "description": "Display speed unit below the number"
+    },
+    "textColor": {
+      "type": "color",
+      "default": "#FFFFFF",
+      "label": "Text Color",
+      "description": "Color of the speed text"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "id": "speedValue",
+      "content": "{{speed.formatted ?? '--'}}",
+      "position": { "x": "50%", "y": "45%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "55%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "{{options.textColor ?? '#FFFFFF'}}",
+        "minimumScaleFactor": 0.5
+      }
+    },
+    {
+      "type": "text",
+      "id": "speedUnit",
+      "content": "{{speed.unit}}",
+      "position": { "x": "50%", "y": "78%" },
+      "anchor": "center",
+      "visible": "{{options.showUnit ?? false}}",
+      "style": {
+        "fontSize": "18%h",
+        "fontWeight": "medium",
+        "color": "rgba(255,255,255,0.7)"
+      }
+    }
+  ]
+}

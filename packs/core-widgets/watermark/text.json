@@ -1,0 +1,29 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "watermark.text",
+  "version": "1.0.0",
+  "category": "watermark",
+  "name": "Text Watermark",
+  "description": "Custom text watermark (e.g., social handle @username)",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.05,
+    "minHeight": 0.02
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{options.watermarkText ?? 'Enter text...'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "55%h",
+        "fontWeight": "semibold",
+        "color": "rgba(255,255,255,0.9)",
+        "minimumScaleFactor": 0.3
+      }
+    }
+  ]
+}

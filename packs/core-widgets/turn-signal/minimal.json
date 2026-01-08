@@ -1,0 +1,51 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "turnSignal.turnSignalCompact",
+  "version": "1.0.0",
+  "category": "turnSignal",
+  "name": "Turn Signal Minimal",
+  "description": "Two small dots indicating turn signals",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 2.0,
+    "minWidth": 0.04,
+    "minHeight": 0.025
+  },
+
+  "bindings": {
+    "leftColor": {
+      "conditions": [
+        { "when": "{{blinker.left}}", "value": "#00FF00" }
+      ],
+      "default": "rgba(255, 255, 255, 0.2)"
+    },
+    "rightColor": {
+      "conditions": [
+        { "when": "{{blinker.right}}", "value": "#00FF00" }
+      ],
+      "default": "rgba(255, 255, 255, 0.2)"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "8%w",
+      "alignment": "center",
+      "children": [
+        {
+          "type": "circle",
+          "radius": "35%h",
+          "fill": "{{leftColor}}"
+        },
+        {
+          "type": "circle",
+          "radius": "35%h",
+          "fill": "{{rightColor}}"
+        }
+      ]
+    }
+  ]
+}

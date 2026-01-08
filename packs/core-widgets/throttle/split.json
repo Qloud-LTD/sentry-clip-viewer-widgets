@@ -1,0 +1,130 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "throttle.throttleSplitBars",
+  "version": "1.0.0",
+  "category": "throttle",
+  "name": "Split Throttle/Brake Bars",
+  "description": "Two separate vertical bars for throttle and brake",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 0.8,
+    "minWidth": 0.05,
+    "minHeight": 0.08
+  },
+
+  "bindings": {
+    "throttleFillHeight": {
+      "default": "{{throttle.percent}}%"
+    },
+    "throttleColor": {
+      "conditions": [
+        { "when": "{{throttle.percent > 0}}", "value": "#34C759" }
+      ],
+      "default": "rgba(128, 128, 128, 0.5)"
+    },
+    "brakeFillHeight": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "100%" }
+      ],
+      "default": "0%"
+    },
+    "brakeColor": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "#FF3B30" }
+      ],
+      "default": "rgba(128, 128, 128, 0.5)"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "10%w",
+      "alignment": "bottom",
+      "children": [
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "2%h",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "group",
+              "layout": "zstack",
+              "alignment": "bottom",
+              "size": { "width": "35%", "height": "75%" },
+              "children": [
+                {
+                  "type": "rect",
+                  "size": { "width": "100%", "height": "100%" },
+                  "cornerRadius": "6%w",
+                  "fill": "rgba(128, 128, 128, 0.3)"
+                },
+                {
+                  "type": "rect",
+                  "size": { "width": "100%", "height": "{{throttleFillHeight}}" },
+                  "maxHeight": "100%",
+                  "position": { "y": "100%" },
+                  "anchor": "bottomCenter",
+                  "cornerRadius": "6%w",
+                  "fill": "{{throttleColor}}"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "content": "T",
+              "style": {
+                "fontSize": "10%h",
+                "fontWeight": "medium",
+                "color": "rgba(255, 255, 255, 0.7)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "2%h",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "group",
+              "layout": "zstack",
+              "alignment": "bottom",
+              "size": { "width": "35%", "height": "75%" },
+              "children": [
+                {
+                  "type": "rect",
+                  "size": { "width": "100%", "height": "100%" },
+                  "cornerRadius": "6%w",
+                  "fill": "rgba(128, 128, 128, 0.3)"
+                },
+                {
+                  "type": "rect",
+                  "size": { "width": "100%", "height": "{{brakeFillHeight}}" },
+                  "maxHeight": "100%",
+                  "position": { "y": "100%" },
+                  "anchor": "bottomCenter",
+                  "cornerRadius": "6%w",
+                  "fill": "{{brakeColor}}"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "content": "B",
+              "style": {
+                "fontSize": "10%h",
+                "fontWeight": "medium",
+                "color": "rgba(255, 255, 255, 0.7)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

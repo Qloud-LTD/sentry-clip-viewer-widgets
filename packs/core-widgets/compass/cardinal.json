@@ -1,0 +1,29 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compass.compassCardinal",
+  "version": "1.0.0",
+  "category": "compass",
+  "name": "Compass Cardinal",
+  "description": "Cardinal direction only (N, NE, E, SE, S, SW, W, NW)",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.05,
+    "minHeight": 0.05
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{heading.cardinal ?? '--'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "60%h",
+        "fontWeight": "bold",
+        "color": "#00D4FF"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gear.gearFullWord",
+  "version": "1.0.0",
+  "category": "gear",
+  "name": "Gear Full Word",
+  "description": "Full gear name display (Drive, Reverse, Park, Neutral)",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.08,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "gearColor": {
+      "conditions": [
+        { "when": "{{gear.letter == 'D'}}", "value": "#00CC00" },
+        { "when": "{{gear.letter == 'R'}}", "value": "#FF3B30" },
+        { "when": "{{gear.letter == 'P'}}", "value": "#007AFF" },
+        { "when": "{{gear.letter == 'N'}}", "value": "#FF9500" }
+      ],
+      "default": "#8E8E93"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{gear.name ?? 'Unknown'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "60%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "{{gearColor}}",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

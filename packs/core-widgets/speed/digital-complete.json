@@ -1,0 +1,107 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.digitalComplete",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Complete Speed Display",
+  "description": "Speed with gear indicator, unit, and autopilot status",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.14,
+    "minHeight": 0.10
+  },
+
+  "bindings": {
+    "gearColor": {
+      "conditions": [
+        { "when": "{{gear.letter == 'D'}}", "value": "#00CC00" },
+        { "when": "{{gear.letter == 'R'}}", "value": "#FF3B30" },
+        { "when": "{{gear.letter == 'P'}}", "value": "#007AFF" },
+        { "when": "{{gear.letter == 'N'}}", "value": "#FF9500" }
+      ],
+      "default": "#8E8E93"
+    },
+    "dotColor": {
+      "conditions": [
+        { "when": "{{autopilot.state == 'fsd'}}", "value": "#0066FF" },
+        { "when": "{{autopilot.state == 'autosteer'}}", "value": "#00CC00" },
+        { "when": "{{autopilot.state == 'tacc'}}", "value": "#FF9900" }
+      ],
+      "default": "#FFFFFF"
+    },
+    "dotOpacity": {
+      "conditions": [
+        { "when": "{{autopilot.engaged == true}}", "value": "1.0" }
+      ],
+      "default": "0.3"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "4%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "group",
+          "layout": "zstack",
+          "size": { "width": "35%h", "height": "45%h" },
+          "children": [
+            {
+              "type": "circle",
+              "radius": "50%",
+              "fill": "{{gearColor}}"
+            },
+            {
+              "type": "text",
+              "content": "{{gear.letter ?? '-'}}",
+              "anchor": "center",
+              "style": {
+                "fontSize": "30%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "#FFFFFF"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "2%h",
+          "children": [
+            {
+              "type": "circle",
+              "radius": "4%h",
+              "fill": "{{dotColor}}",
+              "opacity": "{{dotOpacity}}"
+            },
+            {
+              "type": "text",
+              "content": "{{speed.formatted ?? '--'}}",
+              "style": {
+                "fontSize": "40%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "#FFFFFF",
+                "minimumScaleFactor": 0.5
+              }
+            },
+            {
+              "type": "text",
+              "content": "{{speed.unit}}",
+              "style": {
+                "fontSize": "10%h",
+                "fontWeight": "medium",
+                "color": "rgba(255,255,255,0.7)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

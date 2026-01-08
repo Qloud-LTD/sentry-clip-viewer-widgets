@@ -1,0 +1,45 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.compact",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Compact Speed",
+  "description": "Minimal speed display for small areas",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.06,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "2%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "text",
+          "content": "{{speed.formatted ?? '--'}}",
+          "style": {
+            "fontSize": "60%h",
+            "fontWeight": "bold",
+            "fontDesign": "rounded",
+            "color": "#FFFFFF",
+            "minimumScaleFactor": 0.5
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{speed.unitShort}}",
+          "style": {
+            "fontSize": "30%h",
+            "fontWeight": "medium",
+            "color": "rgba(255,255,255,0.7)"
+          }
+        }
+      ]
+    }
+  ]
+}

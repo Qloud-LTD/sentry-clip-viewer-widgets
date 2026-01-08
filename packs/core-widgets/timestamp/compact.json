@@ -1,0 +1,30 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "timestamp.timestampCompact",
+  "version": "1.0.0",
+  "category": "timestamp",
+  "name": "Compact Timestamp",
+  "description": "Compact format YYYY/MM/DD HH:mm:ss",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.14,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{timestamp.compact ?? '----/--/-- --:--:--'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "45%h",
+        "fontWeight": "medium",
+        "fontDesign": "monospaced",
+        "color": "#FFFFFF",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

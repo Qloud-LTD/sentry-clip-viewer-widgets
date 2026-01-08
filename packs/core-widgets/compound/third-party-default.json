@@ -1,0 +1,94 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compound.thirdPartyDefault",
+  "version": "1.0.0",
+  "category": "compound",
+  "name": "Third Party Panel",
+  "description": "Third-party telemetry panel with battery and temperatures",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.25,
+    "minHeight": 0.06
+  },
+
+  "bindings": {
+    "powerColor": {
+      "conditions": [
+        { "when": "{{power.value >= 0}}", "value": "#34C759" }
+      ],
+      "default": "#00D4FF"
+    },
+    "powerIcon": {
+      "conditions": [
+        { "when": "{{power.value >= 0}}", "value": "bolt.fill" }
+      ],
+      "default": "arrow.down.to.line"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "8%w",
+      "alignment": "center",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "4%h",
+          "alignment": "center",
+          "size": { "width": "25%", "height": "100%" },
+          "children": [
+            {
+              "type": "widget",
+              "ref": "battery.batteryIconPercent",
+              "size": { "width": "100%", "height": "50%" }
+            },
+            {
+              "type": "text",
+              "content": "{{battery.range ?? '--'}} mi",
+              "style": {
+                "fontSize": "20%h",
+                "fontWeight": "medium",
+                "color": "rgba(255,255,255,0.7)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "widget",
+          "ref": "temperature.temperatureBoth",
+          "size": { "width": "30%", "height": "90%" }
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "4%h",
+          "alignment": "center",
+          "size": { "width": "25%", "height": "100%" },
+          "visibility": "{{power.available}}",
+          "children": [
+            {
+              "type": "icon",
+              "name": "{{powerIcon}}",
+              "size": "30%h",
+              "color": "{{powerColor}}"
+            },
+            {
+              "type": "text",
+              "content": "{{power.formatted ?? '--'}} kW",
+              "style": {
+                "fontSize": "22%h",
+                "fontWeight": "medium",
+                "color": "{{powerColor}}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

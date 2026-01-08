@@ -1,0 +1,31 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "autopilot.autopilotIcon",
+  "version": "1.0.0",
+  "category": "autopilot",
+  "name": "Autopilot Icon",
+  "description": "Steering wheel icon colored by autopilot state",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.05,
+    "minHeight": 0.05
+  },
+
+  "elements": [
+    {
+      "type": "icon",
+      "name": "steeringwheel",
+      "size": "70%h",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "color": "{{autopilot.color}}",
+      "shadow": {
+        "color": "{{autopilot.color}}",
+        "opacity": 0.5,
+        "radius": 2
+      }
+    }
+  ]
+}

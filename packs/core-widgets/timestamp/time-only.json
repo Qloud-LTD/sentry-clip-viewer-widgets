@@ -1,0 +1,30 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "timestamp.time-only",
+  "version": "1.0.0",
+  "category": "timestamp",
+  "name": "Time Only",
+  "description": "Time display (HH:mm:ss)",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.1,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{timestamp.time ?? '--:--:--'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "60%h",
+        "fontWeight": "bold",
+        "fontDesign": "monospaced",
+        "color": "#FFFFFF",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

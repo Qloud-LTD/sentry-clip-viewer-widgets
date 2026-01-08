@@ -1,0 +1,51 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compound.teslaHUDDefault",
+  "version": "1.0.0",
+  "category": "compound",
+  "name": "Tesla HUD",
+  "description": "Standard Tesla-style HUD with speed, gear, and autopilot",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.30,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "4%w",
+      "alignment": "center",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "widget",
+          "ref": "gear.gearColored",
+          "size": { "width": "10%", "height": "80%" }
+        },
+        {
+          "type": "widget",
+          "ref": "turnSignal.turnSignalArrows",
+          "size": { "width": "12%", "height": "50%" }
+        },
+        {
+          "type": "widget",
+          "ref": "speed.speedDigital",
+          "size": { "width": "30%", "height": "100%" }
+        },
+        {
+          "type": "widget",
+          "ref": "autopilot.autopilotDot",
+          "size": { "width": "8%", "height": "50%" }
+        },
+        {
+          "type": "widget",
+          "ref": "steering.steeringWheel",
+          "size": { "width": "12%", "height": "80%" }
+        }
+      ]
+    }
+  ]
+}

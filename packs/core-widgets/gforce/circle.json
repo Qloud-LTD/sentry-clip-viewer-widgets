@@ -1,0 +1,114 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gForce.gForceCircle",
+  "version": "1.0.0",
+  "category": "gforce",
+  "name": "G-Force Circle",
+  "description": "Circular g-force meter with position dot",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.08,
+    "minHeight": 0.08
+  },
+
+  "options": {
+    "maxG": {
+      "type": "number",
+      "default": 1.5,
+      "label": "Maximum G",
+      "description": "Maximum g-force displayed (edge of circle)"
+    }
+  },
+
+  "bindings": {
+    "dotX": {
+      "expression": "{{50 + (gforce.x / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "dotY": {
+      "expression": "{{50 - (gforce.y / (options.maxG ?? 1.5)) * 40}}%",
+      "default": "50%"
+    },
+    "dotColor": {
+      "conditions": [
+        { "when": "{{gforce.magnitude > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.magnitude > 0.4}}", "value": "#FF9500" },
+        { "when": "{{gforce.magnitude > 0.1}}", "value": "#34C759" }
+      ],
+      "default": "#FFFFFF"
+    },
+    "gValue": {
+      "expression": "{{gforce.magnitude | format:'%.1f'}}g",
+      "default": "0.0g"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "circle",
+      "id": "background",
+      "radius": "42%",
+      "position": { "x": "50%", "y": "50%" },
+      "fill": "rgba(0,0,0,0.7)"
+    },
+    {
+      "type": "circle",
+      "id": "border",
+      "radius": "42%",
+      "position": { "x": "50%", "y": "50%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "2%"
+    },
+    {
+      "type": "circle",
+      "id": "innerRing",
+      "radius": "21%",
+      "position": { "x": "50%", "y": "50%" },
+      "stroke": "rgba(255,255,255,0.3)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "line",
+      "id": "horizontalCrosshair",
+      "from": { "x": "10%", "y": "50%" },
+      "to": { "x": "90%", "y": "50%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "line",
+      "id": "verticalCrosshair",
+      "from": { "x": "50%", "y": "10%" },
+      "to": { "x": "50%", "y": "90%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "circle",
+      "id": "gForceDot",
+      "radius": "5%",
+      "position": { "x": "{{dotX}}", "y": "{{dotY}}" },
+      "fill": "{{dotColor}}",
+      "shadow": {
+        "color": "{{dotColor}}",
+        "opacity": 0.5,
+        "radius": "4%"
+      }
+    },
+    {
+      "type": "text",
+      "id": "gValueLabel",
+      "content": "{{gValue}}",
+      "position": { "x": "50%", "y": "78%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "12%h",
+        "fontWeight": "bold",
+        "fontDesign": "monospaced",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

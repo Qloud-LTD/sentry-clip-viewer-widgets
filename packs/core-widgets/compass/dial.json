@@ -1,0 +1,90 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compass.compassDial",
+  "version": "1.0.0",
+  "category": "compass",
+  "name": "Compass Dial",
+  "description": "Rotating compass dial with cardinal directions",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.06,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "circle",
+      "radius": "42%",
+      "position": { "x": "50%", "y": "50%" },
+      "stroke": {
+        "color": "rgba(255, 255, 255, 0.3)",
+        "width": "2.5%h"
+      }
+    },
+    {
+      "type": "group",
+      "layout": "zstack",
+      "rotation": "{{heading.degrees}}",
+      "children": [
+        {
+          "type": "text",
+          "content": "N",
+          "position": { "x": "50%", "y": "15%" },
+          "anchor": "center",
+          "rotation": "-{{heading.degrees}}",
+          "style": {
+            "fontSize": "15%h",
+            "fontWeight": "bold",
+            "color": "#FF3B30"
+          }
+        },
+        {
+          "type": "text",
+          "content": "E",
+          "position": { "x": "85%", "y": "50%" },
+          "anchor": "center",
+          "rotation": "-{{heading.degrees}}",
+          "style": {
+            "fontSize": "15%h",
+            "fontWeight": "bold",
+            "color": "rgba(255, 255, 255, 0.7)"
+          }
+        },
+        {
+          "type": "text",
+          "content": "S",
+          "position": { "x": "50%", "y": "85%" },
+          "anchor": "center",
+          "rotation": "-{{heading.degrees}}",
+          "style": {
+            "fontSize": "15%h",
+            "fontWeight": "bold",
+            "color": "rgba(255, 255, 255, 0.7)"
+          }
+        },
+        {
+          "type": "text",
+          "content": "W",
+          "position": { "x": "15%", "y": "50%" },
+          "anchor": "center",
+          "rotation": "-{{heading.degrees}}",
+          "style": {
+            "fontSize": "15%h",
+            "fontWeight": "bold",
+            "color": "rgba(255, 255, 255, 0.7)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "arrowtriangle.up.fill",
+      "size": "25%h",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "color": "#00D4FF"
+    }
+  ]
+}

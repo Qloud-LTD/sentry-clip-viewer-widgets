@@ -1,0 +1,55 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compound.racingDefault",
+  "version": "1.0.0",
+  "category": "compound",
+  "name": "Racing HUD",
+  "description": "Racing-style HUD with speed, g-force, and throttle/brake",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.35,
+    "minHeight": 0.10
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "5%w",
+      "alignment": "center",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "widget",
+          "ref": "gForce.gForceCircle",
+          "size": { "width": "25%", "height": "90%" }
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "4%h",
+          "alignment": "center",
+          "size": { "width": "35%", "height": "100%" },
+          "children": [
+            {
+              "type": "widget",
+              "ref": "speed.speedDigital",
+              "size": { "width": "100%", "height": "65%" }
+            },
+            {
+              "type": "widget",
+              "ref": "gear.gearLetter",
+              "size": { "width": "40%", "height": "30%" }
+            }
+          ]
+        },
+        {
+          "type": "widget",
+          "ref": "throttle.throttleSplit",
+          "size": { "width": "15%", "height": "90%" }
+        }
+      ]
+    }
+  ]
+}

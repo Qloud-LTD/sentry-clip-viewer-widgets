@@ -1,0 +1,37 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "location.locationCompact",
+  "version": "1.0.0",
+  "category": "location",
+  "name": "Compact Coordinates",
+  "description": "Single-line compact coordinate display",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.15,
+    "minHeight": 0.03
+  },
+
+  "bindings": {
+    "coordsDisplay": {
+      "expression": "{{location.lat | format:'%.4f'}}, {{location.lon | format:'%.4f'}}",
+      "default": "--.----, --.----"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{coordsDisplay}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "50%h",
+        "fontWeight": "medium",
+        "fontDesign": "monospaced",
+        "color": "#FFFFFF",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

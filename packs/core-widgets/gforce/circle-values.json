@@ -1,0 +1,128 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gForce.gForceCircleValues",
+  "version": "1.0.0",
+  "category": "gforce",
+  "name": "G-Force Circle with Values",
+  "description": "Circular g-force meter with X/Y numeric values displayed",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 0.8,
+    "minWidth": 0.08,
+    "minHeight": 0.10
+  },
+
+  "options": {
+    "maxG": {
+      "type": "number",
+      "default": 1.5,
+      "label": "Maximum G",
+      "description": "Maximum g-force displayed (edge of circle)"
+    }
+  },
+
+  "bindings": {
+    "dotX": {
+      "expression": "{{50 + (gforce.x / (options.maxG ?? 1.5)) * 35}}%",
+      "default": "50%"
+    },
+    "dotY": {
+      "expression": "{{35 - (gforce.y / (options.maxG ?? 1.5)) * 28}}%",
+      "default": "35%"
+    },
+    "dotColor": {
+      "conditions": [
+        { "when": "{{gforce.magnitude > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.magnitude > 0.4}}", "value": "#FF9500" },
+        { "when": "{{gforce.magnitude > 0.1}}", "value": "#34C759" }
+      ],
+      "default": "#FFFFFF"
+    },
+    "xValue": {
+      "expression": "{{gforce.x | format:'%.2f'}}g",
+      "default": "--g"
+    },
+    "yValue": {
+      "expression": "{{gforce.y | format:'%.2f'}}g",
+      "default": "--g"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "circle",
+      "id": "background",
+      "radius": "32%w",
+      "position": { "x": "50%", "y": "35%" },
+      "fill": "rgba(0,0,0,0.7)"
+    },
+    {
+      "type": "circle",
+      "id": "border",
+      "radius": "32%w",
+      "position": { "x": "50%", "y": "35%" },
+      "stroke": "rgba(255,255,255,0.4)",
+      "strokeWidth": "2%"
+    },
+    {
+      "type": "line",
+      "id": "horizontalCrosshair",
+      "from": { "x": "20%", "y": "35%" },
+      "to": { "x": "80%", "y": "35%" },
+      "stroke": "rgba(255,255,255,0.3)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "line",
+      "id": "verticalCrosshair",
+      "from": { "x": "50%", "y": "5%" },
+      "to": { "x": "50%", "y": "65%" },
+      "stroke": "rgba(255,255,255,0.3)",
+      "strokeWidth": "1%"
+    },
+    {
+      "type": "circle",
+      "id": "gForceDot",
+      "radius": "4%w",
+      "position": { "x": "{{dotX}}", "y": "{{dotY}}" },
+      "fill": "{{dotColor}}",
+      "shadow": {
+        "color": "{{dotColor}}",
+        "opacity": 0.5,
+        "radius": "3%"
+      }
+    },
+    {
+      "type": "group",
+      "id": "valuesRow",
+      "layout": "hstack",
+      "alignment": "center",
+      "spacing": "10%w",
+      "position": { "x": "50%", "y": "82%" },
+      "anchor": "center",
+      "children": [
+        {
+          "type": "text",
+          "content": "X: {{xValue}}",
+          "style": {
+            "fontSize": "10%h",
+            "fontWeight": "medium",
+            "fontDesign": "monospaced",
+            "color": "rgba(255,255,255,0.8)"
+          }
+        },
+        {
+          "type": "text",
+          "content": "Y: {{yValue}}",
+          "style": {
+            "fontSize": "10%h",
+            "fontWeight": "medium",
+            "fontDesign": "monospaced",
+            "color": "rgba(255,255,255,0.8)"
+          }
+        }
+      ]
+    }
+  ]
+}

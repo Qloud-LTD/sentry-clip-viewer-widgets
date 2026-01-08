@@ -1,0 +1,30 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "timestamp.timestampISO",
+  "version": "1.0.0",
+  "category": "timestamp",
+  "name": "ISO 8601 Timestamp",
+  "description": "Full ISO 8601 format timestamp",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.18,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{timestamp.iso ?? '----------T--:--:--Z'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "40%h",
+        "fontWeight": "regular",
+        "fontDesign": "monospaced",
+        "color": "#FFFFFF",
+        "minimumScaleFactor": 0.4
+      }
+    }
+  ]
+}

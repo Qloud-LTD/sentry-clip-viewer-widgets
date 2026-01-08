@@ -1,0 +1,67 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "turnSignal.turnSignalArrows",
+  "version": "1.0.0",
+  "category": "turnSignal",
+  "name": "Turn Signal Arrows",
+  "description": "Left and right arrow indicators",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 2.5,
+    "minWidth": 0.08,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "leftColor": {
+      "conditions": [
+        { "when": "{{blinker.left}}", "value": "#00FF00" }
+      ],
+      "default": "rgba(255, 255, 255, 0.2)"
+    },
+    "leftOpacity": {
+      "conditions": [
+        { "when": "{{blinker.left}}", "value": 1.0 }
+      ],
+      "default": 0.3
+    },
+    "rightColor": {
+      "conditions": [
+        { "when": "{{blinker.right}}", "value": "#00FF00" }
+      ],
+      "default": "rgba(255, 255, 255, 0.2)"
+    },
+    "rightOpacity": {
+      "conditions": [
+        { "when": "{{blinker.right}}", "value": 1.0 }
+      ],
+      "default": 0.3
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "15%w",
+      "alignment": "center",
+      "children": [
+        {
+          "type": "icon",
+          "name": "arrowtriangle.left.fill",
+          "size": "60%h",
+          "color": "{{leftColor}}",
+          "opacity": "{{leftOpacity}}"
+        },
+        {
+          "type": "icon",
+          "name": "arrowtriangle.right.fill",
+          "size": "60%h",
+          "color": "{{rightColor}}",
+          "opacity": "{{rightOpacity}}"
+        }
+      ]
+    }
+  ]
+}

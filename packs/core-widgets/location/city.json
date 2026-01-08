@@ -1,0 +1,37 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "location.locationCityOnly",
+  "version": "1.0.0",
+  "category": "location",
+  "name": "City Only",
+  "description": "City and state from reverse geocoded address",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.10,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "cityState": {
+      "expression": "{{location.name | split:', ' | last:2 | join:', '}}",
+      "default": "No Location"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{cityState}}",
+      "position": { "x": "5%", "y": "50%" },
+      "anchor": "centerLeft",
+      "style": {
+        "fontSize": "45%h",
+        "fontWeight": "semibold",
+        "color": "#FFFFFF",
+        "lineLimit": 1,
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

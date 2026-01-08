@@ -1,0 +1,96 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "throttle.throttlePedalSingle",
+  "version": "1.0.0",
+  "category": "throttle",
+  "name": "Single Pedal",
+  "description": "Throttle pedal icon that fills based on percentage",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.04,
+    "minHeight": 0.04
+  },
+
+  "bindings": {
+    "fillHeight": {
+      "default": "{{throttle.percent}}%"
+    },
+    "fillColor": {
+      "conditions": [
+        { "when": "{{throttle.percent > 0}}", "value": "#34C759" }
+      ],
+      "default": "rgba(255, 255, 255, 0.3)"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "zstack",
+      "alignment": "bottom",
+      "children": [
+        {
+          "type": "rect",
+          "id": "pedalBackground",
+          "size": { "width": "60%", "height": "90%" },
+          "position": { "x": "50%", "y": "50%" },
+          "anchor": "center",
+          "cornerRadius": "15%w",
+          "fill": "rgba(255, 255, 255, 0.15)",
+          "stroke": {
+            "color": "rgba(255, 255, 255, 0.3)",
+            "width": 1
+          }
+        },
+        {
+          "type": "rect",
+          "id": "pedalFill",
+          "size": { "width": "60%", "height": "{{fillHeight}}" },
+          "maxHeight": "90%",
+          "position": { "x": "50%", "y": "95%" },
+          "anchor": "bottomCenter",
+          "cornerRadius": "15%w",
+          "fill": "{{fillColor}}"
+        },
+        {
+          "type": "rect",
+          "id": "pedalRidges1",
+          "size": { "width": "40%", "height": "2%" },
+          "position": { "x": "50%", "y": "25%" },
+          "anchor": "center",
+          "cornerRadius": "50%h",
+          "fill": "rgba(255, 255, 255, 0.2)"
+        },
+        {
+          "type": "rect",
+          "id": "pedalRidges2",
+          "size": { "width": "40%", "height": "2%" },
+          "position": { "x": "50%", "y": "40%" },
+          "anchor": "center",
+          "cornerRadius": "50%h",
+          "fill": "rgba(255, 255, 255, 0.2)"
+        },
+        {
+          "type": "rect",
+          "id": "pedalRidges3",
+          "size": { "width": "40%", "height": "2%" },
+          "position": { "x": "50%", "y": "55%" },
+          "anchor": "center",
+          "cornerRadius": "50%h",
+          "fill": "rgba(255, 255, 255, 0.2)"
+        },
+        {
+          "type": "rect",
+          "id": "pedalRidges4",
+          "size": { "width": "40%", "height": "2%" },
+          "position": { "x": "50%", "y": "70%" },
+          "anchor": "center",
+          "cornerRadius": "50%h",
+          "fill": "rgba(255, 255, 255, 0.2)"
+        }
+      ]
+    }
+  ]
+}

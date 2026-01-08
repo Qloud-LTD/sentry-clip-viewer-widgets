@@ -1,0 +1,68 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "map.mapWithTrail",
+  "version": "1.0.0",
+  "category": "map",
+  "name": "Map with Trail",
+  "description": "Standard map showing recent driving path behind the vehicle",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.1,
+    "minHeight": 0.1
+  },
+
+  "options": {
+    "zoomLevel": {
+      "type": "enum",
+      "values": ["street", "neighborhood", "city"],
+      "default": "neighborhood",
+      "label": "Zoom Level",
+      "description": "Map zoom level"
+    },
+    "showsUserLocation": {
+      "type": "boolean",
+      "default": true,
+      "label": "Show Location Marker",
+      "description": "Display marker at vehicle position"
+    },
+    "showsHeading": {
+      "type": "boolean",
+      "default": true,
+      "label": "Show Heading",
+      "description": "Display heading direction indicator"
+    },
+    "trailDuration": {
+      "type": "number",
+      "default": 30,
+      "label": "Trail Duration (seconds)",
+      "description": "How many seconds of trail to show behind the vehicle"
+    },
+    "trailColor": {
+      "type": "color",
+      "default": "#007AFF",
+      "label": "Trail Color",
+      "description": "Color of the driving path trail"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "map",
+      "id": "trailMap",
+      "style": "standard",
+      "position": { "x": "50%", "y": "50%" },
+      "size": { "width": "100%", "height": "100%" },
+      "cornerRadius": "5%",
+      "options": {
+        "showsUserLocation": "{{options.showsUserLocation ?? true}}",
+        "showsHeading": "{{options.showsHeading ?? true}}",
+        "zoomLevel": "{{options.zoomLevel ?? 'neighborhood'}}",
+        "showsTrail": true,
+        "trailDuration": "{{options.trailDuration ?? 30}}",
+        "trailColor": "{{options.trailColor ?? '#007AFF'}}"
+      }
+    }
+  ]
+}

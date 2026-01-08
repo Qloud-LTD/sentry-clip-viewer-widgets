@@ -1,0 +1,36 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compound.racingMinimal",
+  "version": "1.0.0",
+  "category": "compound",
+  "name": "Racing HUD Minimal",
+  "description": "Minimal racing HUD with speed and throttle bar",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.25,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "8%w",
+      "alignment": "center",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "widget",
+          "ref": "speed.speedDigital",
+          "size": { "width": "40%", "height": "100%" }
+        },
+        {
+          "type": "widget",
+          "ref": "throttle.throttleHorizontal",
+          "size": { "width": "45%", "height": "60%" }
+        }
+      ]
+    }
+  ]
+}

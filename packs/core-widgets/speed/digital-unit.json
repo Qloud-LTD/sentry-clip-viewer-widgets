@@ -1,0 +1,45 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.digital-unit",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Digital Speed with Unit",
+  "description": "Digital speed display with unit label below",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.08,
+    "minHeight": 0.08
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "spacing": "2%h",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "text",
+          "content": "{{speed.formatted ?? '--'}}",
+          "style": {
+            "fontSize": "50%h",
+            "fontWeight": "bold",
+            "fontDesign": "rounded",
+            "color": "#FFFFFF",
+            "minimumScaleFactor": 0.5
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{speed.unit}}",
+          "style": {
+            "fontSize": "15%h",
+            "fontWeight": "medium",
+            "color": "rgba(255,255,255,0.7)"
+          }
+        }
+      ]
+    }
+  ]
+}

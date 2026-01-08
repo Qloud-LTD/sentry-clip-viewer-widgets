@@ -1,0 +1,41 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "temperature.temperatureOutsideOnly",
+  "version": "1.0.0",
+  "category": "temperature",
+  "name": "Outside Temperature",
+  "description": "Exterior temperature only",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.07,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "4%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "icon",
+          "name": "thermometer.medium",
+          "size": "45%h",
+          "color": "#00D4FF"
+        },
+        {
+          "type": "text",
+          "content": "{{temp.outsideFormatted ?? '--°'}}",
+          "style": {
+            "fontSize": "50%h",
+            "fontWeight": "semibold",
+            "fontDesign": "rounded",
+            "color": "#00D4FF"
+          }
+        }
+      ]
+    }
+  ]
+}

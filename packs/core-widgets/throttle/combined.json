@@ -1,0 +1,96 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "throttle.throttleCombinedBar",
+  "version": "1.0.0",
+  "category": "throttle",
+  "name": "Combined Throttle/Brake Bar",
+  "description": "Single vertical bar showing throttle (green) or brake (red)",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 0.4,
+    "minWidth": 0.025,
+    "minHeight": 0.08
+  },
+
+  "bindings": {
+    "fillColor": {
+      "conditions": [
+        { "when": "{{brake.applied && throttle.percent > 0}}", "value": "#FFCC00" },
+        { "when": "{{brake.applied}}", "value": "#FF3B30" },
+        { "when": "{{throttle.percent > 0}}", "value": "#34C759" }
+      ],
+      "default": "#8E8E93"
+    },
+    "fillHeight": {
+      "conditions": [
+        { "when": "{{brake.applied}}", "value": "100%" }
+      ],
+      "default": "{{throttle.percent}}%"
+    },
+    "displayText": {
+      "conditions": [
+        { "when": "{{brake.applied && throttle.percent <= 0}}", "value": "B" },
+        { "when": "{{throttle.percent >= 100}}", "value": "F" },
+        { "when": "{{throttle.percent > 0 || brake.applied}}", "value": "{{throttle.percent | int}}" }
+      ],
+      "default": ""
+    },
+    "glowEnabled": {
+      "conditions": [
+        { "when": "{{throttle.percent >= 100 && !brake.applied}}", "value": true }
+      ],
+      "default": false
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "zstack",
+      "alignment": "bottom",
+      "children": [
+        {
+          "type": "rect",
+          "size": { "width": "70%", "height": "85%" },
+          "position": { "x": "50%", "y": "50%" },
+          "anchor": "center",
+          "cornerRadius": "8%w",
+          "fill": "rgba(128, 128, 128, 0.3)"
+        },
+        {
+          "type": "rect",
+          "size": { "width": "70%", "height": "{{fillHeight}}" },
+          "maxHeight": "85%",
+          "position": { "x": "50%", "y": "92.5%" },
+          "anchor": "bottomCenter",
+          "cornerRadius": "8%w",
+          "fill": "{{fillColor}}",
+          "shadow": {
+            "enabled": "{{glowEnabled}}",
+            "color": "#34C759",
+            "radius": "15%w",
+            "opacity": 0.8
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{displayText}}",
+          "position": { "x": "50%", "y": "12%" },
+          "anchor": "topCenter",
+          "style": {
+            "fontSize": "28%w",
+            "fontWeight": "bold",
+            "fontDesign": "rounded",
+            "color": "#FFFFFF",
+            "shadow": {
+              "color": "#000000",
+              "radius": 1,
+              "y": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

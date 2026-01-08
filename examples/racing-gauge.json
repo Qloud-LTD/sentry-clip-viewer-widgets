@@ -1,0 +1,141 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compound.racingGauge",
+  "version": "1.0.0",
+  "category": "compound",
+  "name": "Racing Gauge HUD",
+  "description": "Racing-style HUD with G-force meter, analog speedometer, and split throttle/brake bars",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.40,
+    "minHeight": 0.15
+  },
+
+  "options": {
+    "maxSpeed": {
+      "type": "number",
+      "default": 160,
+      "label": "Max Speed",
+      "description": "Maximum speed on the gauge (mph or km/h)"
+    },
+    "maxG": {
+      "type": "number",
+      "default": 1.5,
+      "label": "Max G-Force",
+      "description": "Maximum G-force displayed on the meter"
+    },
+    "showDigitalSpeed": {
+      "type": "boolean",
+      "default": true,
+      "label": "Show Digital Speed",
+      "description": "Display digital speed readout below gauge"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "4%w",
+      "alignment": "center",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "group",
+          "id": "gforceSection",
+          "layout": "vstack",
+          "spacing": "2%h",
+          "alignment": "center",
+          "size": { "width": "28%", "height": "100%" },
+          "children": [
+            {
+              "type": "widget",
+              "ref": "gForce.gForceCircle",
+              "size": { "width": "100%", "height": "85%" },
+              "options": {
+                "maxG": "{{options.maxG ?? 1.5}}"
+              }
+            },
+            {
+              "type": "text",
+              "content": "G-FORCE",
+              "style": {
+                "fontSize": "10%h",
+                "fontWeight": "medium",
+                "fontDesign": "monospaced",
+                "color": "rgba(255,255,255,0.6)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "speedSection",
+          "layout": "vstack",
+          "spacing": "2%h",
+          "alignment": "center",
+          "size": { "width": "40%", "height": "100%" },
+          "children": [
+            {
+              "type": "widget",
+              "ref": "speed.speedAnalog",
+              "size": { "width": "100%", "height": "80%" },
+              "options": {
+                "maxSpeed": "{{options.maxSpeed ?? 160}}"
+              }
+            },
+            {
+              "type": "group",
+              "layout": "hstack",
+              "spacing": "8%w",
+              "alignment": "center",
+              "visible": "{{options.showDigitalSpeed ?? true}}",
+              "children": [
+                {
+                  "type": "text",
+                  "content": "{{speed.formatted ?? '--'}}",
+                  "style": {
+                    "fontSize": "14%h",
+                    "fontWeight": "bold",
+                    "fontDesign": "monospaced",
+                    "color": "#FFFFFF"
+                  }
+                },
+                {
+                  "type": "text",
+                  "content": "{{speed.unit}}",
+                  "style": {
+                    "fontSize": "10%h",
+                    "fontWeight": "medium",
+                    "color": "rgba(255,255,255,0.6)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "id": "pedalsSection",
+          "layout": "vstack",
+          "spacing": "3%h",
+          "alignment": "center",
+          "size": { "width": "20%", "height": "100%" },
+          "children": [
+            {
+              "type": "widget",
+              "ref": "throttle.throttleSplit",
+              "size": { "width": "80%", "height": "75%" }
+            },
+            {
+              "type": "widget",
+              "ref": "gear.gearLetter",
+              "size": { "width": "50%", "height": "18%" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

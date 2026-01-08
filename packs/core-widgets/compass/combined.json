@@ -1,0 +1,45 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compass.compassCombined",
+  "version": "1.0.0",
+  "category": "compass",
+  "name": "Compass Combined",
+  "description": "Both degrees and cardinal direction side by side",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 2.0,
+    "minWidth": 0.08,
+    "minHeight": 0.04
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "10%w",
+      "alignment": "center",
+      "children": [
+        {
+          "type": "text",
+          "content": "{{heading.formatted ?? '--°'}}",
+          "style": {
+            "fontSize": "50%h",
+            "fontWeight": "bold",
+            "fontDesign": "rounded",
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "type": "text",
+          "content": "{{heading.cardinal ?? '--'}}",
+          "style": {
+            "fontSize": "40%h",
+            "fontWeight": "medium",
+            "color": "#00D4FF"
+          }
+        }
+      ]
+    }
+  ]
+}

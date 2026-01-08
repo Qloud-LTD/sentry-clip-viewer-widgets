@@ -1,0 +1,88 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "speed.digitalGear",
+  "version": "1.0.0",
+  "category": "speed",
+  "name": "Speed with Gear",
+  "description": "Digital speed display with gear indicator",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.12,
+    "minHeight": 0.08
+  },
+
+  "bindings": {
+    "gearColor": {
+      "conditions": [
+        { "when": "{{gear.letter == 'D'}}", "value": "#00CC00" },
+        { "when": "{{gear.letter == 'R'}}", "value": "#FF3B30" },
+        { "when": "{{gear.letter == 'P'}}", "value": "#007AFF" },
+        { "when": "{{gear.letter == 'N'}}", "value": "#FF9500" }
+      ],
+      "default": "#8E8E93"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "5%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "group",
+          "layout": "zstack",
+          "size": { "width": "40%h", "height": "50%h" },
+          "children": [
+            {
+              "type": "roundedRect",
+              "cornerRadius": "15%",
+              "size": { "width": "100%", "height": "100%" },
+              "fill": "{{gearColor}}"
+            },
+            {
+              "type": "text",
+              "content": "{{gear.letter ?? '-'}}",
+              "anchor": "center",
+              "style": {
+                "fontSize": "35%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "#FFFFFF"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "0",
+          "children": [
+            {
+              "type": "text",
+              "content": "{{speed.formatted ?? '--'}}",
+              "style": {
+                "fontSize": "45%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "#FFFFFF",
+                "minimumScaleFactor": 0.5
+              }
+            },
+            {
+              "type": "text",
+              "content": "{{speed.unit}}",
+              "style": {
+                "fontSize": "12%h",
+                "fontWeight": "medium",
+                "color": "rgba(255,255,255,0.7)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

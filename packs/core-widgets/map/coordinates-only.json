@@ -1,0 +1,155 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "map.mapCoordinatesOnly",
+  "version": "1.0.0",
+  "category": "map",
+  "name": "Coordinates Only",
+  "description": "Display GPS coordinates and heading as text without a map",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.15,
+    "minHeight": 0.08
+  },
+
+  "options": {
+    "showHeading": {
+      "type": "boolean",
+      "default": true,
+      "label": "Show Heading",
+      "description": "Display compass heading below coordinates"
+    },
+    "coordinatePrecision": {
+      "type": "number",
+      "default": 5,
+      "label": "Decimal Places",
+      "description": "Number of decimal places for coordinates"
+    }
+  },
+
+  "bindings": {
+    "latDisplay": {
+      "expression": "{{location.lat | abs | format:('%.'+((options.coordinatePrecision ?? 5)|string)+'f')}}{{location.lat >= 0 ? ' N' : ' S'}}",
+      "default": "-- N"
+    },
+    "lonDisplay": {
+      "expression": "{{location.lon | abs | format:('%.'+((options.coordinatePrecision ?? 5)|string)+'f')}}{{location.lon >= 0 ? ' E' : ' W'}}",
+      "default": "-- W"
+    },
+    "headingDisplay": {
+      "expression": "{{heading.degrees | format:'%.0f'}}",
+      "default": "--"
+    },
+    "headingCardinal": {
+      "conditions": [
+        { "when": "{{heading.degrees >= 337.5 || heading.degrees < 22.5}}", "value": "N" },
+        { "when": "{{heading.degrees >= 22.5 && heading.degrees < 67.5}}", "value": "NE" },
+        { "when": "{{heading.degrees >= 67.5 && heading.degrees < 112.5}}", "value": "E" },
+        { "when": "{{heading.degrees >= 112.5 && heading.degrees < 157.5}}", "value": "SE" },
+        { "when": "{{heading.degrees >= 157.5 && heading.degrees < 202.5}}", "value": "S" },
+        { "when": "{{heading.degrees >= 202.5 && heading.degrees < 247.5}}", "value": "SW" },
+        { "when": "{{heading.degrees >= 247.5 && heading.degrees < 292.5}}", "value": "W" },
+        { "when": "{{heading.degrees >= 292.5 && heading.degrees < 337.5}}", "value": "NW" }
+      ],
+      "default": "--"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "roundedRect",
+      "id": "background",
+      "position": { "x": "50%", "y": "50%" },
+      "size": { "width": "100%", "height": "100%" },
+      "cornerRadius": "8%h",
+      "fill": "rgba(0, 0, 0, 0.7)"
+    },
+    {
+      "type": "group",
+      "layout": "vstack",
+      "alignment": "center",
+      "spacing": "4%h",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "children": [
+        {
+          "type": "group",
+          "layout": "hstack",
+          "alignment": "center",
+          "spacing": "3%w",
+          "children": [
+            {
+              "type": "icon",
+              "name": "location.fill",
+              "size": "20%h",
+              "color": "#00D4FF"
+            },
+            {
+              "type": "group",
+              "layout": "vstack",
+              "alignment": "leading",
+              "spacing": "2%h",
+              "children": [
+                {
+                  "type": "text",
+                  "content": "{{latDisplay}}",
+                  "style": {
+                    "fontSize": "22%h",
+                    "fontWeight": "medium",
+                    "fontDesign": "monospaced",
+                    "color": "#FFFFFF"
+                  }
+                },
+                {
+                  "type": "text",
+                  "content": "{{lonDisplay}}",
+                  "style": {
+                    "fontSize": "22%h",
+                    "fontWeight": "medium",
+                    "fontDesign": "monospaced",
+                    "color": "#FFFFFF"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "hstack",
+          "alignment": "center",
+          "spacing": "2%w",
+          "visible": "{{options.showHeading ?? true}}",
+          "children": [
+            {
+              "type": "icon",
+              "name": "location.north.fill",
+              "size": "16%h",
+              "color": "rgba(255, 255, 255, 0.7)",
+              "rotation": "{{heading.degrees}}"
+            },
+            {
+              "type": "text",
+              "content": "{{headingDisplay}}",
+              "style": {
+                "fontSize": "18%h",
+                "fontWeight": "medium",
+                "fontDesign": "monospaced",
+                "color": "rgba(255, 255, 255, 0.7)"
+              }
+            },
+            {
+              "type": "text",
+              "content": "{{headingCardinal}}",
+              "style": {
+                "fontSize": "18%h",
+                "fontWeight": "bold",
+                "color": "rgba(255, 255, 255, 0.7)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

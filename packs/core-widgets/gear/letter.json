@@ -1,0 +1,31 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gear.letter",
+  "version": "1.0.0",
+  "category": "gear",
+  "name": "Gear Letter",
+  "description": "Simple gear letter display (P/R/N/D)",
+  "author": "Built-in",
+
+  "canvas": {
+    "aspectRatio": 1.0,
+    "minWidth": 0.03,
+    "minHeight": 0.03
+  },
+
+  "elements": [
+    {
+      "type": "text",
+      "content": "{{gear.letter ?? '-'}}",
+      "position": { "x": "50%", "y": "50%" },
+      "anchor": "center",
+      "style": {
+        "fontSize": "60%h",
+        "fontWeight": "bold",
+        "fontDesign": "rounded",
+        "color": "#FFFFFF",
+        "minimumScaleFactor": 0.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "temperature.temperatureBoth",
+  "version": "1.0.0",
+  "category": "temperature",
+  "name": "Both Temperatures",
+  "description": "Inside and outside temperatures side by side",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.12,
+    "minHeight": 0.06
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "12%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "4%h",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "icon",
+              "name": "thermometer.snowflake",
+              "size": "28%h",
+              "color": "#FF9500"
+            },
+            {
+              "type": "text",
+              "content": "{{temp.insideFormatted ?? '--°'}}",
+              "style": {
+                "fontSize": "30%h",
+                "fontWeight": "semibold",
+                "fontDesign": "rounded",
+                "color": "#FF9500"
+              }
+            },
+            {
+              "type": "text",
+              "content": "Inside",
+              "style": {
+                "fontSize": "14%h",
+                "fontWeight": "regular",
+                "color": "rgba(255,255,255,0.5)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "vstack",
+          "spacing": "4%h",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "icon",
+              "name": "thermometer.sun",
+              "size": "28%h",
+              "color": "#00D4FF"
+            },
+            {
+              "type": "text",
+              "content": "{{temp.outsideFormatted ?? '--°'}}",
+              "style": {
+                "fontSize": "30%h",
+                "fontWeight": "semibold",
+                "fontDesign": "rounded",
+                "color": "#00D4FF"
+              }
+            },
+            {
+              "type": "text",
+              "content": "Outside",
+              "style": {
+                "fontSize": "14%h",
+                "fontWeight": "regular",
+                "color": "rgba(255,255,255,0.5)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

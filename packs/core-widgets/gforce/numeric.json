@@ -1,0 +1,111 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "gForce.gForceNumericOnly",
+  "version": "1.0.0",
+  "category": "gforce",
+  "name": "Numeric G-Force",
+  "description": "Text-only lateral and longitudinal g-force values",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.08,
+    "minHeight": 0.05
+  },
+
+  "bindings": {
+    "xValue": {
+      "expression": "{{gforce.x | format:'%+.2f'}} g",
+      "default": "-- g"
+    },
+    "yValue": {
+      "expression": "{{gforce.y | format:'%+.2f'}} g",
+      "default": "-- g"
+    },
+    "xColor": {
+      "conditions": [
+        { "when": "{{gforce.x | abs > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.x | abs > 0.5}}", "value": "#FFCC00" }
+      ],
+      "default": "#FFFFFF"
+    },
+    "yColor": {
+      "conditions": [
+        { "when": "{{gforce.y | abs > 0.8}}", "value": "#FF3B30" },
+        { "when": "{{gforce.y | abs > 0.5}}", "value": "#FFCC00" }
+      ],
+      "default": "#FFFFFF"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "vstack",
+      "alignment": "leading",
+      "spacing": "10%h",
+      "padding": "10%h",
+      "children": [
+        {
+          "type": "group",
+          "layout": "hstack",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "text",
+              "content": "Lat:",
+              "style": {
+                "fontSize": "25%h",
+                "fontWeight": "medium",
+                "fontDesign": "monospaced",
+                "color": "rgba(255,255,255,0.6)"
+              }
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "type": "text",
+              "content": "{{xValue}}",
+              "style": {
+                "fontSize": "25%h",
+                "fontWeight": "medium",
+                "fontDesign": "monospaced",
+                "color": "{{xColor}}"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "layout": "hstack",
+          "alignment": "center",
+          "children": [
+            {
+              "type": "text",
+              "content": "Long:",
+              "style": {
+                "fontSize": "25%h",
+                "fontWeight": "medium",
+                "fontDesign": "monospaced",
+                "color": "rgba(255,255,255,0.6)"
+              }
+            },
+            {
+              "type": "spacer"
+            },
+            {
+              "type": "text",
+              "content": "{{yValue}}",
+              "style": {
+                "fontSize": "25%h",
+                "fontWeight": "medium",
+                "fontDesign": "monospaced",
+                "color": "{{yColor}}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

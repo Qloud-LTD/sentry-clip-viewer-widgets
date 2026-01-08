@@ -1,0 +1,75 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "battery.batteryIconRange",
+  "version": "1.0.0",
+  "category": "battery",
+  "name": "Battery Icon + Range",
+  "description": "Battery icon with estimated range",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.10,
+    "minHeight": 0.05
+  },
+
+  "bindings": {
+    "batteryColor": {
+      "conditions": [
+        { "when": "{{battery.percent < 20}}", "value": "#FF3B30" },
+        { "when": "{{battery.percent < 40}}", "value": "#FF9500" }
+      ],
+      "default": "#34C759"
+    },
+    "batteryIcon": {
+      "conditions": [
+        { "when": "{{battery.percent >= 75}}", "value": "battery.100" },
+        { "when": "{{battery.percent >= 50}}", "value": "battery.75" },
+        { "when": "{{battery.percent >= 25}}", "value": "battery.50" }
+      ],
+      "default": "battery.25"
+    }
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "4%w",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "icon",
+          "name": "{{batteryIcon}}",
+          "size": "50%h",
+          "color": "{{batteryColor}}"
+        },
+        {
+          "type": "group",
+          "layout": "hstack",
+          "spacing": "2%w",
+          "children": [
+            {
+              "type": "text",
+              "content": "{{battery.range | int ?? '--'}}",
+              "style": {
+                "fontSize": "50%h",
+                "fontWeight": "bold",
+                "fontDesign": "rounded",
+                "color": "#FFFFFF"
+              }
+            },
+            {
+              "type": "text",
+              "content": "mi",
+              "style": {
+                "fontSize": "30%h",
+                "fontWeight": "medium",
+                "color": "rgba(255,255,255,0.7)"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

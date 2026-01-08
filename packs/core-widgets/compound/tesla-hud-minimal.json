@@ -1,0 +1,46 @@
+{
+  "$schema": "widget-v1.json",
+  "id": "compound.teslaHUDMinimal",
+  "version": "1.0.0",
+  "category": "compound",
+  "name": "Tesla HUD Minimal",
+  "description": "Minimal Tesla-style HUD with just speed, gear, and turn signals",
+  "author": "Built-in",
+
+  "canvas": {
+    "minWidth": 0.20,
+    "minHeight": 0.05
+  },
+
+  "elements": [
+    {
+      "type": "group",
+      "layout": "hstack",
+      "spacing": "5%w",
+      "alignment": "center",
+      "size": { "width": "100%", "height": "100%" },
+      "children": [
+        {
+          "type": "widget",
+          "ref": "gear.gearLetter",
+          "size": { "width": "12%", "height": "80%" }
+        },
+        {
+          "type": "widget",
+          "ref": "turnSignal.turnSignalMinimal",
+          "size": { "width": "10%", "height": "40%" }
+        },
+        {
+          "type": "widget",
+          "ref": "speed.speedDigital",
+          "size": { "width": "40%", "height": "100%" }
+        },
+        {
+          "type": "widget",
+          "ref": "autopilot.autopilotDot",
+          "size": { "width": "8%", "height": "40%" }
+        }
+      ]
+    }
+  ]
+}
