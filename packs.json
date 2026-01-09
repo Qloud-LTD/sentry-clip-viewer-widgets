@@ -1,0 +1,35 @@
+{
+  "$schema": "repository-index-v1.json",
+  "name": "Official Sentry Clip Viewer Widgets",
+  "description": "Official widget packs maintained by Qloud-LTD",
+  "author": "Qloud-LTD",
+  "minAppVersion": "3.0.0",
+  "packs": [
+    {
+      "id": "core-widgets",
+      "name": "Core Widgets",
+      "version": "1.0.0",
+      "description": "Built-in widget collection with speed gauges, steering wheels, autopilot indicators, maps, and more. Contains 77 widgets across 15 categories.",
+      "download_url": "https://github.com/Qloud-LTD/sentry-clip-viewer-widgets/releases/download/v1.0.0/core-widgets-v1.0.0.zip",
+      "preview_image": "https://raw.githubusercontent.com/Qloud-LTD/sentry-clip-viewer-widgets/main/previews/core-widgets.png",
+      "categories": [
+        "speed",
+        "gear",
+        "throttle",
+        "steering",
+        "autopilot",
+        "compass",
+        "turn-signal",
+        "location",
+        "gforce",
+        "map",
+        "battery",
+        "temperature",
+        "timestamp",
+        "watermark",
+        "compound"
+      ],
+      "widget_count": 77
+    }
+  ]
+}
