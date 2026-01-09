@@ -118,4 +118,3 @@ Contributions are welcome! Please read the SDK documentation before submitting w
 ## Related
 
 - [Sentry Clip Viewer on App Store](https://apps.apple.com/app/sentry-clip-viewer)
-- [Main App Repository](https://github.com/sioakim/sentryclipviewer) (private)
